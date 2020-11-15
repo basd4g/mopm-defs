@@ -16,9 +16,6 @@ environments:
     dependencies:
       - curl
       - awk
-      - grep
-      - tar
-      - cp
     verification: "which peco"
     privilege: true
     script: |

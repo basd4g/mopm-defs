@@ -16,8 +16,6 @@ environments:
     dependencies:
       - curl
       - apt
-      - apt-key
-      - grep
     verification: "which yarn"
     privilege: true
     script: |
