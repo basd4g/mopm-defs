@@ -1,0 +1,24 @@
+#!/bin/mopm
+name: brew
+url: https://brew.sh
+description: The Missing Package Manager for macOS (or Linux)
+environments:
+  - architecture: amd64
+    platform: darwin
+    dependencies:
+    verification: "which brew"
+    privilege: true
+    script: |
+      export CI=1
+      if [ "$SUDO_USER" = '' ]; then
+        exit 1
+      fi
+      sudo_nopass_line="${SUDO_USER} ALL=NOPASSWD: ALL"
+      if ! grep '#includedir /etc/sudoers.d' /etc/sudoers > /dev/null 2>&1; then
+        echo '#includedir /etc/sudoers.d' >> /etc/sudoers
+      fi
+      mkdir -p /etc/sudoers.d
+      echo $sudo_nopass_line >> /etc/sudoers.d/99-mopm
+      chmod 440 /etc/sudoers.d/99-mopm
+      sudo --user=${SUDO_USER} /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+      sed -i "s/${sudo_nopass_line}//" /etc/sudoers.d/99-mopm
