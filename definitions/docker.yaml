@@ -1,0 +1,20 @@
+name: docker
+url: https://www.docker.com
+description: Docker is OS-level virtualization to deliver software in packages called containers.
+environments:
+  - architecture: amd64
+    platform: darwin
+    dependencies:
+      - brew
+    verification: "which docker"
+    privilege: false
+    script: |
+      brew install docker
+  - architecture: amd64
+    platform: linux/ubuntu
+    dependencies:
+      - snap
+    verification: "which docker"
+    privilege: true
+    script: |
+      snap install docker

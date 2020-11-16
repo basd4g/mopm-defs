@@ -1,0 +1,12 @@
+name: snap
+url: https://snapcraft.io
+description: Snap is a software packageing and deployment sysytem developped by Cannonical fot the operation sysytems that use the Linux kernel.
+environments:
+  - architecture: amd64
+    platform: linux/ubuntu
+    dependencies:
+      - apt
+    verification: "which snap"
+    privilege: true
+    script: |
+      apt install snapd

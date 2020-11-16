@@ -1,0 +1,20 @@
+name: nmap
+url: https://nmap.org
+description: Nmap Free Security Scanner, Port Scanner, & Network Exploration Tool.
+environments:
+  - architecture: amd64
+    platform: darwin
+    dependencies:
+      - brew
+    verification: "which nmap"
+    privilege: false
+    script: |
+      brew install nmap
+  - architecture: amd64
+    platform: linux/ubuntu
+    dependencies:
+      - apt
+    verification: "which nmap"
+    privilege: true
+    script: |
+      apt install -y nmap

@@ -1,0 +1,29 @@
+name: spotify
+url: https://spotify.com
+description: Spotify is a digital music service that gives you access to millions of songs.
+environments:
+  - architecture: amd64
+    platform: darwin
+    dependencies:
+      - brew
+    verification: "which spotify"
+    privilege: false
+    script: |
+      brew cask install spotify
+  - architecture: amd64
+    platform: linux/ubuntu
+    dependencies:
+      - curl
+      - apt
+    verification: "which spotify"
+    privilege: true
+    script: |
+      curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | apt-key add -
+      SPOTIFY_PACKAGE_URL="deb http://repository.spotify.com stable non-free"
+      SPOTIFY_LIST="/etc/apt/sources.list.d/spotify.list"
+      if ! grep -q "$SPOTIFY_PACKAGE_URL" "$SPOTIFY_LIST" ; then
+        echo "$SPOTIFY_PACKAGE_URL" >> "$SPOTIFY_LIST"
+      fi
+      apt update
+      apt install -y spotify-client
+      # https://www.spotify.com/jp/download/linux/

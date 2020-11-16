@@ -1,0 +1,20 @@
+name: vim
+url: https://www.vim.org
+description: Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. It is included as "vi" with most UNIX systems and with Apple OS X.
+environments:
+  - architecture: amd64
+    platform: darwin
+    dependencies:
+      - brew
+    verification: "which vim"
+    privilege: false
+    script: |
+      brew install vim
+  - architecture: amd64
+    platform: linux/ubuntu
+    dependencies:
+      - apt
+    verification: "which vim"
+    privilege: true
+    script: |
+      apt install vim

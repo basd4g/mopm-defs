@@ -1,0 +1,20 @@
+name: imagemagick
+url: https://www.imagemagick.org
+description: Use ImageMagick to create, edit, compose, and convert bitmap images. Resize an image, crop it, change its shades and colors, and captions, and more.
+environments:
+  - architecture: amd64
+    platform: darwin
+    dependencies:
+      - brew
+    verification: "which imagemagick"
+    privilege: false
+    script: |
+      brew install imagemagick
+  - architecture: amd64
+    platform: linux/ubuntu
+    dependencies:
+      - apt
+    verification: "which imagemagick"
+    privilege: true
+    script: |
+      apt install -y imagemagick

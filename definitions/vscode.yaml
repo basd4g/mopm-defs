@@ -1,0 +1,28 @@
+name: vscode
+url: https://code.visualstudio.com
+description: Visual Studio Code is a code editor redefined and optimized for building and debugging modern web and cloud applications.
+environments:
+  - architecture: amd64
+    platform: darwin
+    dependencies:
+      - brew
+    verification: "which code"
+    privilege: false
+    script: |
+      brew cask install code
+  - architecture: amd64
+    platform: linux/ubuntu
+    dependencies:
+      - curl
+      - apt
+    verification: "which code"
+    privilege: true
+    script: |
+      curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+      install -o root -g root -m 644 microsoft.gpg /usr/share/keyrings/microsoft-archive-keyring.gpg
+      sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft-archive-keyring.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+      apt install -y apt-transport-https
+      apt update
+      apt install -y code # or code-insiders
+      # https://wiki.debian.org/VisualStudioCode
+      # https://code.visualstudio.com/docs/setup/linux

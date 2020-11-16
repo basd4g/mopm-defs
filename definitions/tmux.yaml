@@ -1,0 +1,20 @@
+name: tmux
+url: https://github.com/tmux/tmux
+description: tmux is a terminal multiplexer.
+environments:
+  - architecture: amd64
+    platform: darwin
+    dependencies:
+      - brew
+    verification: "which tmux"
+    privilege: false
+    script: |
+      brew install tmux
+  - architecture: amd64
+    platform: linux/ubuntu
+    dependencies:
+      - apt
+    verification: "which tmux"
+    privilege: true
+    script: |
+      apt install -y tmux

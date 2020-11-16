@@ -1,0 +1,20 @@
+name: gimp
+url: https://www.gimp.org
+description: GNU Image Manipulation Program (GIMP) is a cross-platform image editor available for GNU/Linux, OS X, Windows and more operationg systems.
+environments:
+  - architecture: amd64
+    platform: darwin
+    dependencies:
+      - brew
+    verification: "which gimp"
+    privilege: false
+    script: |
+      brew cask install gimp
+  - architecture: amd64
+    platform: linux/ubuntu
+    dependencies:
+      - apt
+    verification: "which gimp"
+    privilege: true
+    script: |
+      apt install -y gimp

@@ -1,0 +1,20 @@
+name: ffmpeg
+url: https://ffmpeg.org
+description: A complete, cross-platform solution to record, convert and stream audio and video.
+environments:
+  - architecture: amd64
+    platform: darwin
+    dependencies:
+      - brew
+    verification: "which ffmpeg"
+    privilege: false
+    script: |
+      brew install ffmpeg
+  - architecture: amd64
+    platform: linux/ubuntu
+    dependencies:
+      - apt
+    verification: "which ffmpeg"
+    privilege: true
+    script: |
+      apt install -y ffmpeg

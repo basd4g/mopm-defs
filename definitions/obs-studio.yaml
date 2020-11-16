@@ -1,0 +1,23 @@
+name: obs-studio
+url: https://obsproject.com
+description: Free and open source software for video recoding and live streaming.
+environments:
+  - architecture: amd64
+    platform: darwin
+    dependencies:
+      - brew
+    verification: "which obs-studio"
+    privilege: false
+    script: |
+      brew cask install obs-studio
+  - architecture: amd64
+    platform: linux/ubuntu
+    dependencies:
+      - apt
+      - ffmpeg
+    verification: "which obs-studio"
+    privilege: true
+    script: |
+      add-apt-repository ppa:obsproject/obs-studio
+      apt update
+      apt install -y obs-studio

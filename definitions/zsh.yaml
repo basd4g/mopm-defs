@@ -1,0 +1,20 @@
+name: zsh
+url: https://sourceforge.net/p/zsh/code/ci/master/tree/
+description: THE Z SHELL (ZSH)
+environments:
+  - architecture: amd64
+    platform: darwin
+    dependencies:
+      - brew
+    verification: "which zsh"
+    privilege: false
+    script: |
+      brew install zsh
+  - architecture: amd64
+    platform: linux/ubuntu
+    dependencies:
+      - apt
+    verification: "which zsh"
+    privilege: true
+    script: |
+      apt install -y zsh

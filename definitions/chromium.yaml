@@ -1,0 +1,20 @@
+name: chromium
+url: https://www.chromium.org
+description: Chromium is an open-source browser project that aims to build a safer, faster, and more stable way for all users to experience the web.
+environments:
+  - architecture: amd64
+    platform: darwin
+    dependencies:
+      - brew
+    verification: "which chromium"
+    privilege: false
+    script: |
+      brew cask install chromium
+  - architecture: amd64
+    platform: linux/ubuntu
+    dependencies:
+      - apt
+    verification: "which chromium"
+    privilege: true
+    script: |
+      apt install -y chromium

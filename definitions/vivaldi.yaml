@@ -1,0 +1,26 @@
+#!/bin/mopm
+name: vivaldi
+url: https://vivaldi.com
+description: Vivaldi browser is a fast, private and secure browser that blocks ads and trackers. It puts you in control with unique features.
+environments:
+  - architecture: amd64
+    platform: darwin
+    dependencies:
+      - brew
+    verification: "whici vivaldi"
+    privilege: false
+    script: |
+      brew cask install vivaldi
+  - architecture: amd64
+    platform: linux/ubuntu
+    dependencies:
+      - wget
+      - apt
+    verification: "which vivaldi"
+    privilege: true
+    script: |
+      wget -qO- https://repo.vivaldi.com/archive/linux_signing_key.pub | apt-key add -
+      add-apt-repository 'deb https://repo.vivaldi.com/archive/deb/ stable main'
+      apt update
+      apt install -y vivaldi-stable
+      #  https://help.vivaldi.com/ja/article/manual-setup-vivaldi-linux-repositories/

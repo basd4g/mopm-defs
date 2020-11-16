@@ -1,0 +1,20 @@
+name: colordiff
+url: https://www.colordiff.org
+description: The Perl script colordiff is a wrapper for 'diff' and produces the same output but with pretty 'syntax' highlighting. Color schemes can be customized.
+environments:
+  - architecture: amd64
+    platform: darwin
+    dependencies:
+      - brew
+    verification: "which colordiff"
+    privilege: false
+    script: |
+      brew install colordiff
+  - architecture: amd64
+    platform: linux/ubuntu
+    dependencies:
+      - apt
+    verification: "which colordiff"
+    privilege: true
+    script: |
+      apt install -y colordiff

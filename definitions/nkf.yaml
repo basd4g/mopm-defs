@@ -1,0 +1,20 @@
+name: nkf
+url: https://osdn.net/projects/nkf/
+description: nkf Network Kanji Filter
+environments:
+  - architecture: amd64
+    platform: darwin
+    dependencies:
+      - brew
+    verification: "which nkf"
+    privilege: false
+    script: |
+      brew install nkf
+  - architecture: amd64
+    platform: linux/ubuntu
+    dependencies:
+      - apt
+    verification: "which nkf"
+    privilege: true
+    script: |
+      apt install -y nkf
