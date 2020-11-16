@@ -1,4 +1,4 @@
-name: nodejs
+name: node
 url: https://nodejs.org
 description: Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine.
 environments:
@@ -9,7 +9,7 @@ environments:
     verification: "which node"
     privilege: false
     script: |
-      brew install nodejs
+      brew install node
   - architecture: amd64
     platform: linux/ubuntu
     dependencies:

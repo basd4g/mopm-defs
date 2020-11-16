@@ -9,7 +9,7 @@ environments:
     verification: "which docker"
     privilege: false
     script: |
-      brew install docker
+      brew cask install docker
   - architecture: amd64
     platform: linux/ubuntu
     dependencies:
