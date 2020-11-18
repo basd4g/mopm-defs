@@ -1,20 +1,28 @@
-name: wget
-url: https://www.gnu.org/software/wget
-description: GNU Wget is a free software package for retrieving files using HTTP, HTTPS, FTP and FTPS, the most widely used Internet protocols.
+name: yarn
+url: https://classic.yarnpkg.com
+description: Fast, reliable, and secure dependency management.
 environments:
   - architecture: amd64
     platform: darwin
     dependencies:
       - brew
-    verification: "which wget"
+    verification: "which yarn"
     privilege: false
     script: |
-      brew install wget
+      brew install yarn
   - architecture: amd64
     platform: linux/ubuntu
     dependencies:
+      - curl
       - apt
-    verification: "which wget"
+    verification: "which yarn"
     privilege: true
     script: |
-      apt install -y wget
+      curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+      YARN_PACKAGE_URL='deb https://dl.yarnpkg.com/debian/ stable main'
+      YARN_LIST='/etc/apt/sources.list.d/yarn.list'
+      if ! grep -q "$YARN_PACKAGE_URL" "$YARN_LIST" ; then
+        echo "$YARN_PACKAGE_URL" >> "$YARN_LIST"
+      fi
+      apt update
+      apt install -y yarn
