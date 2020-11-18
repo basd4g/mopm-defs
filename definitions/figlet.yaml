@@ -1,0 +1,20 @@
+name: figlet
+url: https://www.figlet.org
+description: FIGlet is a program for making large letters out of ordinary text
+environments:
+  - architecture: amd64
+    platform: darwin
+    dependencies:
+      - brew
+    verification: "which figlet"
+    privilege: false
+    script: |
+      brew install figlet
+  - architecture: amd64
+    platform: linux/ubuntu
+    dependencies:
+      - apt
+    verification: "which figlet"
+    privilege: true
+    script: |
+      apt install -y figlet

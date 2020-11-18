@@ -1,0 +1,20 @@
+name: postman
+url: https://www.postman.com
+description: Postman makes API development easy. Our platform offers the tools to simplify each step of the API building process and streamlines collaboration so you can create better APIs faster.
+environments:
+  - architecture: amd64
+    platform: darwin
+    dependencies:
+      - brew
+    verification: "which postman"
+    privilege: false
+    script: |
+      brew install postman
+  - architecture: amd64
+    platform: linux/ubuntu
+    dependencies:
+      - snap
+    verification: "which postman"
+    privilege: true
+    script: |
+      snap install postman

@@ -1,0 +1,12 @@
+name: karabiner-elements
+url: https://karabiner-elements.pqrs.org
+description: Karabiner-Elements, a powerful and stable keyboard customizer for macOS.
+environments:
+  - architecture: amd64
+    platform: darwin
+    dependencies:
+      - brew
+    verification: "which karabiner-elements"
+    privilege: false
+    script: |
+      brew cask install karabiner-elements

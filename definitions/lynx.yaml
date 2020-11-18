@@ -1,0 +1,20 @@
+name: lynx
+url: https://lynx.browser.org
+description: Lynx is a text browser for the World Wide Web.
+environments:
+  - architecture: amd64
+    platform: darwin
+    dependencies:
+      - brew
+    verification: "which lynx"
+    privilege: false
+    script: |
+      brew install lynx
+  - architecture: amd64
+    platform: linux/ubuntu
+    dependencies:
+      - apt
+    verification: "which lynx"
+    privilege: true
+    script: |
+      apt install -y lynx
