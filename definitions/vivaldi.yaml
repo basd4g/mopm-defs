@@ -12,7 +12,7 @@ environments:
     script: |
       brew cask install vivaldi
   - architecture: amd64
-    platform: linux/ubuntu
+    platform: linux#ubuntu
     dependencies:
       - wget
       - apt

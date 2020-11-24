@@ -11,7 +11,7 @@ environments:
     script: |
       brew install vim
   - architecture: amd64
-    platform: linux/ubuntu
+    platform: linux#ubuntu
     dependencies:
       - apt
     verification: "which vim"

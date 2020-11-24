@@ -3,7 +3,7 @@ url: https://packages.debian.org/jessie/gdebi
 description: simple tool to view and install deb files - GNOME GUI
 environments:
   - architecture: amd64
-    platform: linux/ubuntu
+    platform: linux#ubuntu
     dependencies:
       - apt
     verification: "which gdebi"

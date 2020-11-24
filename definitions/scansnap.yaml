@@ -12,7 +12,7 @@ environments:
     script: |
       brew install git
   - architecture: amd64
-    platform: linux/ubuntu
+    platform: linux#ubuntu
     dependencies:
       - apt
     verification: "which git"
