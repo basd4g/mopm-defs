@@ -14,6 +14,7 @@ environments:
     platform: linux#ubuntu
     dependencies:
       - apt
+      - curl
     verification: "which node"
     privilege: true
     script: |
