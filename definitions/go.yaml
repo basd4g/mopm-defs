@@ -1,0 +1,22 @@
+name: go
+url: https://golang.org
+description: Go is an open source programming language that makes it easy to build simple, reliable, and eficient software.
+environments:
+  - architecture: amd64
+    platform: darwin
+    dependencies:
+      - brew
+    verification: "which go"
+    privilege: false
+    script: |
+      brew install go
+  - architecture: amd64
+    platform: linux/ubuntu
+    dependencies:
+      - apt
+    verification: "which go"
+    privilege: true
+    script: |
+      add-apt-repository ppa:longsleep/golang-backports
+      apt update
+      apt install golang-go

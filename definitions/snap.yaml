@@ -9,4 +9,4 @@ environments:
     verification: "which snap"
     privilege: true
     script: |
-      apt install snapd
+      apt install snapd snapd-xdg-open

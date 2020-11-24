@@ -1,0 +1,20 @@
+name: hugo
+url: https://gohugo.io
+description: The world's fastest framework fot building website
+environments:
+  - architecture: amd64
+    platform: darwin
+    dependencies:
+      - brew
+    verification: "which hugo"
+    privilege: false
+    script: |
+      brew install hugo
+  - architecture: amd64
+    platform: linux/ubuntu
+    dependencies:
+      - apt
+    verification: "which hugo"
+    privilege: true
+    script: |
+      apt install -y hugo
