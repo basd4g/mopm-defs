@@ -5,14 +5,14 @@ ENV LANG ja_JP.UTF-8
 ENV LANGUAGE ja_JP:en
 ENV LC_ALL ja_JP.UTF-8
 RUN apt-get update \
-  && apt-get install -y apt-utils tzdata locales locales-all language-pack-ja-base language-pack-ja sudo bash\
+  && apt-get install -y apt-utils tzdata locales locales-all language-pack-ja-base language-pack-ja sudo bash curl\
   && rm -rf /var/lib/apt/lists/* \
   && ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime \
   && locale-gen ja_JP.UTF-8 \
   && sed -i -E 's/# (ja_JP.UTF-8)/\1/' /etc/locale.gen \
   && localedef -f UTF-8 -i ja_JP ja_JP.utf8 \
   && echo -e 'LANG="ja_JP.UTF-8"\nLANGUAGE="ja_JP:en"\n' > /etc/default/locale \
-  && dkpg-reconfigure --frontend=noninteractive locales \
+  && dpkg-reconfigure --frontend=noninteractive locales \
   && update-locale LANG=$LANG
 
 
