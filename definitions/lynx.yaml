@@ -11,7 +11,7 @@ environments:
     script: |
       brew install lynx
   - architecture: amd64
-    platform: linux/ubuntu
+    platform: linux#ubuntu
     dependencies:
       - apt
     verification: "which lynx"
