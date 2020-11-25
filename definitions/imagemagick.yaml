@@ -17,4 +17,5 @@ environments:
     verification: "which imagemagick"
     privilege: true
     script: |
-      apt install -y imagemagick
+      apt-get update
+      apt-get install -y imagemagick

@@ -19,6 +19,6 @@ environments:
     privilege: true
     script: |
       curl -sL https://deb.nodesource.com/setup | bash
-      apt update
-      apt upgrade -y
-      apt install -y nodejs
+      apt-get update
+      apt-get upgrade -y
+      apt-get install -y nodejs

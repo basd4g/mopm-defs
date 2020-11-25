@@ -1,22 +1,13 @@
 #!/bin/mopm
-name: git
+name: scansnap-home
 url: https://git-scm.com
-description: Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency
+description: 
 environments:
   - architecture: amd64
     platform: darwin
     dependencies:
       - brew
-    verification: "which git"
+    verification: "which fujitsu-scansnap-home"
     privilege: false
     script: |
-      brew install git
-  - architecture: amd64
-    platform: linux#ubuntu
-    dependencies:
-      - apt
-    verification: "which git"
-    privilege: true
-    script: |
-      add-apt-repository -y ppa:git-core/ppa
-      apt install -y git
+      brew cask install fujitsu-scansnap-home

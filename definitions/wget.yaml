@@ -17,4 +17,5 @@ environments:
     verification: "which wget"
     privilege: true
     script: |
-      apt install -y wget
+      apt-get update
+      apt-get install -y wget

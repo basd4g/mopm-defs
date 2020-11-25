@@ -18,5 +18,5 @@ environments:
     privilege: true
     script: |
       add-apt-repository ppa:longsleep/golang-backports
-      apt update
-      apt install golang-go
+      apt-get update
+      apt-get install -y golang-go

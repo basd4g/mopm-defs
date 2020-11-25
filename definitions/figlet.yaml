@@ -17,4 +17,5 @@ environments:
     verification: "which figlet"
     privilege: true
     script: |
+      apt-get update
       apt install -y figlet

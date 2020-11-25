@@ -17,4 +17,5 @@ environments:
     verification: "which tmux"
     privilege: true
     script: |
-      apt install -y tmux
+      apt-get update
+      apt-get install -y tmux

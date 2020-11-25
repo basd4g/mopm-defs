@@ -17,4 +17,5 @@ environments:
     verification: "which vim"
     privilege: true
     script: |
-      apt install vim
+      apt-get update
+      apt-get install -y vim

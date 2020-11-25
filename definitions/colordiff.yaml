@@ -17,4 +17,5 @@ environments:
     verification: "which colordiff"
     privilege: true
     script: |
-      apt install -y colordiff
+      apt-get update
+      apt-get install -y colordiff

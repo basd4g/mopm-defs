@@ -24,5 +24,5 @@ environments:
       if ! grep -q "$YARN_PACKAGE_URL" "$YARN_LIST" ; then
         echo "$YARN_PACKAGE_URL" >> "$YARN_LIST"
       fi
-      apt update
-      apt install -y yarn
+      apt-get update
+      apt-get install -y yarn

@@ -24,6 +24,6 @@ environments:
       if ! grep -q "$SPOTIFY_PACKAGE_URL" "$SPOTIFY_LIST" ; then
         echo "$SPOTIFY_PACKAGE_URL" >> "$SPOTIFY_LIST"
       fi
-      apt update
-      apt install -y spotify-client
+      apt-get update
+      apt-get install -y spotify-client
       # https://www.spotify.com/jp/download/linux/

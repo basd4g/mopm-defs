@@ -19,4 +19,5 @@ environments:
     privilege: true
     script: |
       add-apt-repository -y ppa:git-core/ppa
+      apt-get update
       apt install -y git

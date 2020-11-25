@@ -1,0 +1,21 @@
+name: unzip
+url: http://infozip.sourceforge.net/UnZip.html
+description: UnZip is an extraction utility for archives compressed in .zip format (also called "zipfiles").
+environments:
+  - architecture: amd64
+    platform: darwin
+    dependencies:
+      - brew
+    verification: "which unzip"
+    privilege: false
+    script: |
+      brew install unzip
+  - architecture: amd64
+    platform: linux#ubuntu
+    dependencies:
+      - apt
+    verification: "which unzip"
+    privilege: true
+    script: |
+      apt-get update
+      apt-get install -y zip unzip

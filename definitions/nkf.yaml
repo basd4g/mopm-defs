@@ -17,4 +17,5 @@ environments:
     verification: "which nkf"
     privilege: true
     script: |
-      apt install -y nkf
+      apt-get update
+      apt-get install -y nkf

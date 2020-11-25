@@ -17,4 +17,5 @@ environments:
     verification: "which lynx"
     privilege: true
     script: |
-      apt install -y lynx
+      apt-get update
+      apt-get install -y lynx

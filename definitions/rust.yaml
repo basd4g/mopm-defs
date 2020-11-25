@@ -1,21 +1,21 @@
-name: ffmpeg
-url: https://ffmpeg.org
-description: A complete, cross-platform solution to record, convert and stream audio and video.
+name: rust
+url: https://www.rust-lang.org
+description: A language empowering everyone to build reliable and efficient software.
 environments:
   - architecture: amd64
     platform: darwin
     dependencies:
       - brew
-    verification: "which ffmpeg"
+    verification: "which rustc"
     privilege: false
     script: |
-      brew install ffmpeg
+      brew cask install rust
   - architecture: amd64
     platform: linux#ubuntu
     dependencies:
       - apt
-    verification: "which ffmpeg"
+    verification: "which rustc"
     privilege: true
     script: |
       apt-get update
-      apt install -y ffmpeg
+      apt-get install -y rustc

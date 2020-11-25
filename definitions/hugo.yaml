@@ -17,4 +17,5 @@ environments:
     verification: "which hugo"
     privilege: true
     script: |
-      apt install -y hugo
+      apt-get update
+      apt-get install -y hugo

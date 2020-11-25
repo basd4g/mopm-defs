@@ -17,4 +17,5 @@ environments:
     verification: "which nmap"
     privilege: true
     script: |
-      apt install -y nmap
+      apt-get update
+      apt-get install -y nmap

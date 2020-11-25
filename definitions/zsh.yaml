@@ -17,4 +17,5 @@ environments:
     verification: "which zsh"
     privilege: true
     script: |
-      apt install -y zsh
+      apt-get update
+      apt-get install -y zsh

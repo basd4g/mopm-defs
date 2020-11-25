@@ -9,11 +9,14 @@ environments:
     verification: "find ~/Library/Font/HackGen-Regular.ttf"
     privilege: false
     script: |
+      brew tap homebrew/cask-fonts
       brew cask install font-hackgen
+      brew cask install font-hackgen-nerd
   - architecture: amd64
     platform: linux#ubuntu
     dependencies:
       - curl
+      - unzip
     verification: "find /usr/share/fonts/HackGen"
     privilege: true
     script: |

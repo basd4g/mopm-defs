@@ -10,3 +10,4 @@ environments:
     privilege: true
     script: |
       which apt
+      which apt-get
