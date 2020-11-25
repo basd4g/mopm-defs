@@ -25,7 +25,7 @@ RUN mkdir -p /home/mopmuser/.mopm && chown mopmuser /home/mopmuser && chown mopm
 
 USER mopmuser
 WORKDIR /home/mopmuser
-COPY . /home/mopmuser/.mopm/repos/github.com/basd4g/mopm-defs
+COPY definitions /home/mopmuser/.mopm/repos/github.com/basd4g/mopm-defs/definitions
 RUN echo 'https://github.com/basd4g/mopm-defs' > /home/mopmuser/.mopm/repos-url
 
 ENTRYPOINT ["sudo", "mopm", "install"]

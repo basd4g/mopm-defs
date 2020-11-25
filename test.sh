@@ -1,10 +1,6 @@
 #!/bin/bash
 
-SCRIPT_DIR=$(cd $(dirname $0); pwd)
-cd $SCRIPT_DIR
-
-echo "docker build"
-docker build -t mopm-defs-ubuntu:latest .
+# Check to try install yaml file, and memo succeeded package file and its sha1sum
 
 installing_package() {
   if docker run mopm-defs-ubuntu:latest "$1" 1>&2; then
@@ -14,30 +10,35 @@ installing_package() {
   fi
 }
 
+SCRIPT_DIR=$(cd $(dirname $0); pwd)
+cd $SCRIPT_DIR
+
+if [ "$2" != "--without-docker-build" ]; then
+  echo "docker build"
+  docker build -t mopm-defs-ubuntu:latest .
+fi
+
 env_id="$(mopm environment)"
-echo "environment:  ${env_id}"
+echo "MOPM-DEFS_TEST: environment:  ${env_id}"
 
 passed_path="test-passed/${env_id}"
-passed_tmp_path="/tmp/passed-file"
-
-rm -f $passed_tmp_path
-touch $passed_tmp_path
 touch $passed_path
 
-find definitions -type f | xargs sha1sum | while read testing_sha1 testing_path
-do
-  testing_pkg="$(echo ${testing_path} | sed -r 's/^definitions\/(.+)\.yaml$/\1/')"
+testing_path="$1"
+testing_sha1="$(sha1sum $testing_path | awk '{print $1}')"
+echo $testing_sha1
+testing_pkg="$(echo ${testing_path} | sed -r 's/^definitions\/(.+)\.yaml$/\1/')"
 
-  if grep --quiet "${testing_sha1} ${testing_path}" "$passed_path"; then
-    echo "skip:  $testing_pkg"
-    echo "${testing_sha1} ${testing_path}" >> "$passed_tmp_path"
-  elif [ "$(installing_package $testing_pkg)" = "true" ]; then
-    echo "success:  $testing_pkg"
-    echo "${testing_sha1} ${testing_path}" >> "$passed_tmp_path"
-  else
-    echo "failed:  $testing_pkg"
-  fi
-done
+if grep --quiet "${testing_sha1} ${testing_path}" "$passed_path"; then
+  echo "MOPM-DEFS_TEST: skip:  $testing_pkg"
+  exit 0
+fi
 
-rm $passed_path
-mv $passed_tmp_path $passed_path
+sed  --in-place --expression="/definitions\/$testing_pkg\.yaml$/d" "$passed_path"
+
+if [ "$(installing_package $testing_pkg)" = "true" ]; then
+  echo "MOPM-DEFS_TEST: success:  $testing_pkg"
+  echo "${testing_sha1} ${testing_path}" >> "$passed_path"
+else
+  echo "MOPM-DEFS_TEST: failed:  $testing_pkg"
+fi
