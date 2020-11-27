@@ -1,0 +1,23 @@
+name: gh
+url: https://github.com/cli/cli
+description: gh is GitHub on the command line. It brings pull requests, issues, and other GitHub concepts to the terminal next to where you are already working with git and your code.
+environments:
+  - architecture: amd64
+    platform: darwin
+    dependencies:
+      - brew
+    verification: "which gh"
+    privilege: false
+    script: |
+      brew install gh
+  - architecture: amd64
+    platform: linux#ubuntu
+    dependencies:
+      - apt
+    verification: "which gh"
+    privilege: true
+    script: |
+      sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
+      sudo apt-add-repository https://cli.github.com/packages
+      sudo apt update
+      sudo apt install gh
